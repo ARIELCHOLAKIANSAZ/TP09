@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodManagerScript : MonoBehaviour
 {
     public GameObject[] Comidas;
     int Comida1, Comida2, OpcionCorrecta;
     int[] Opciones = { 0,0,0 };
+    public Text[] Precios;
+    int OpcionSelec = 4;
+    
+    
     private void Start()
     {
         Comida1 = Random.Range(0, 16); Comida2 = Random.Range(0, 16); OpcionCorrecta = Random.Range(0, 2);
@@ -18,6 +23,23 @@ public class FoodManagerScript : MonoBehaviour
             }
         }
         Opciones[OpcionCorrecta] = Comida2;
+        string Precio;
+        Debug.Log(GameObject.Find(Comidas[Opciones[0]].name).GetComponent<Producto>().precio);
+
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log(GameObject.Find(Comidas[Opciones[i]].name).GetComponent<Producto>().precio);
+            Precio = GameObject.Find(Comidas[Opciones[i]].name).GetComponent<Producto>().precio.ToString();
+            Precios[i].text = Precio;
+        }
+
     }
 
+    public void Respuestar()
+    {
+        if(OpcionSelec == 4)
+        {
+            
+        }
+    }
 }
